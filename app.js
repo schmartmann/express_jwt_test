@@ -36,7 +36,7 @@ router.post(
       user,
       config.refreshTokenSecret,
       {
-        expiresIn: config.refreshTokenLIfe
+        expiresIn: config.refreshTokenLife
       }
     );
 
@@ -91,8 +91,15 @@ router.get(
   ( req, res ) => {
     res.send( 'Secure' );
   }
- );
+);
 
 app.use( bodyParser.json() );
+
 app.use( '/api', router );
-app.listen( config.port || process.env.port || 300 );
+const PORT = config.port || process.env.port || 300;
+app.listen(
+  PORT,
+  () => {
+    console.log( `*frasier crane voice* Hello localhost:${ PORT }. I'm listening.` );
+  }
+);
