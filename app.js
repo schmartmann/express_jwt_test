@@ -1,7 +1,7 @@
 const express    = require( 'express' );
 const bodyParser = require( 'body-parser' );
 const jwt        = require( 'jsonwebtoken' );
-const Router     = express.Router();
+const router     = express.Router();
 const config     = require( './config' );
 const tokenList  = {};
 const app        = express();
