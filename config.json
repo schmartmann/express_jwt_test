@@ -1,0 +1,7 @@
+{
+  "secret": "blip-blop-dont-save-this",
+  "refreshTokenSecret": "dont-save-this-either-idiot",
+  "port": 3000,
+  "tokenLife": 900,
+  "refreshTokenLife": 86400
+}
