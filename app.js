@@ -6,10 +6,69 @@ const config     = require( './config' );
 const tokenList  = {};
 const app        = express();
 
+const insertUser = ( name, email ) => {
+  return new Promise(
+    ( resolve, reject ) => {
+      if ( name && email ) {
+        const user = {
+          name,
+          email
+        };
+
+        resolve( user );
+      }
+      else {
+        reject();
+      }
+    }
+  )
+};
+
+const getUser = ( name, email ) => {
+  return new Promise(
+    ( resolve, reject ) => {
+      if ( name && email ) {
+        const user = {
+          name,
+          email
+        };
+
+        resolve();
+      }
+      else {
+        reject();
+      }
+    }
+  )
+};
+
 router.get(
   '/',
   ( req, res ) => {
     res.send( 'OKAY' );
+  }
+);
+
+router.post(
+  '/signup',
+  ( req, res ) => {
+    const { name, email } = req.body;
+    getUser( name, email ).
+      then(
+        user => {
+
+          if ( user ) {
+            return res.send( 'okay' )
+          }
+          else {
+            return insertUser( name, email );
+          }
+        }
+      ).
+      then(
+        newUser => { console.log( newUser ); return res.send( newUser ) }
+      ).
+      catch( err => {console.log( "error" ); res.send( err )} )
   }
 );
 
